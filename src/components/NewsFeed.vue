@@ -1,20 +1,33 @@
 <template>
   <div class="news-feed">
     <h1>This is a news feed</h1>
+    <!-- <h2>{{ chitterNewsFeed }}</h2> -->
+    <!-- {{ peep1 }} {{ peep2 }} -->
+    <ul>
+      <li v-for="chitter in peeps" :key="chitter.id">
+        {{ chitter.date }} {{ chitter.body }}
+      </li>
+    </ul>
+    <!-- <h1>{{ peeps }}</h1> -->
+    <!-- {{ getPeeps() }} -->
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
+import { PeepsTypes } from "@/types/PeepsTypes.interface";
 
 @Component
 export default class NewsFeed extends Vue {
-  @Prop() private chitterFeed!: string;
-  peep1 = "This is a peep";
-  peep2 = "This is a 2nd peep";
+  @Prop() // private peeps: CommentsTypes | undefined;
+  peeps!: PeepsTypes;
 
-  get peeps(): string {
-    return this.peep1 + this.peep2;
+  created(): void {
+    fetch("http://localhost:4000/chitter")
+      .then((res) => res.json())
+      .then((peeps) => {
+        this.peeps = peeps;
+      });
   }
 }
 </script>
