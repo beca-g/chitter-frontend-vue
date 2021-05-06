@@ -2,11 +2,11 @@ import { shallowMount } from "@vue/test-utils";
 import NewsFeed from "@/components/NewsFeed.vue";
 
 describe("NewsFeed.vue", () => {
-  it("renders props.newsFeed when passed", () => {
-    const newsFeed = "This is a news feed";
+  it("renders props.chitterFeed when passed", () => {
+    const chitterFeed = "Welcome to Chitter";
     const wrapper = shallowMount(NewsFeed, {
-      propsData: { newsFeed },
+      propsData: { chitterFeed },
     });
-    expect(wrapper.text()).toMatch(newsFeed);
+    expect(wrapper.text()).toMatch(chitterFeed);
   });
 });

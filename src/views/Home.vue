@@ -2,7 +2,7 @@
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png" />
     <HelloWorld />
-    <NewsFeed />
+    <NewsFeed chitterFeed="Welcome to Chitter" />
   </div>
 </template>
 
