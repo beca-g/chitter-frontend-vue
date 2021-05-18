@@ -11,7 +11,7 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 @Component
 export default class HelloWorld extends Vue {
   @Prop() private msg!: string;
-  name = "Beca";
+  name = "Welcome to Chitter";
 }
 </script>
 

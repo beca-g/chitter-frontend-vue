@@ -3,10 +3,11 @@ import NewsFeed from "@/components/NewsFeed.vue";
 
 describe("NewsFeed.vue", () => {
   it("renders props.chitterFeed when passed", () => {
-    const chitterFeed = "Welcome to Chitter";
+    const peep = "peep peep";
+
     const wrapper = shallowMount(NewsFeed, {
-      propsData: { chitterFeed },
+      propsData: { peep },
     });
-    expect(wrapper.text()).toMatch(chitterFeed);
+    expect(wrapper.html()).toContain("peep peep");
   });
 });
