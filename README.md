@@ -66,9 +66,7 @@ I want to receive an email if I am tagged in a Peep
 
 ## Tech
 * Typescript
-* mocha/chai
-* nyc coverage
-
+* jest
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
