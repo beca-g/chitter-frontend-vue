@@ -1,6 +1,5 @@
 <template>
   <div class="news-feed">
-    <h1>{{ chitterFeed }}</h1>
     <ul>
       <li v-for="chitter in peeps" :key="chitter.id">
         {{ chitter.date }} {{ chitter.body }}
@@ -12,19 +11,17 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 import { PeepsTypes } from "@/types/PeepsTypes.interface";
-import fetch from "node-fetch";
+import axios from "axios";
 
-@Component
+@Component({})
 export default class NewsFeed extends Vue {
-  @Prop() private chitterFeed!: string;
+  @Prop()
   peeps!: PeepsTypes;
 
-  created(): unknown {
-    return fetch("http://localhost:4000/chitter")
-      .then((res) => res.json())
-      .then((peeps) => {
-        this.peeps = peeps;
-      });
+  mounted(): unknown {
+    return axios
+      .get("http://localhost:4000/chitter")
+      .then((response) => (this.peeps = response.data));
   }
 }
 </script>
@@ -39,7 +36,7 @@ ul {
   padding: 0;
 }
 li {
-  display: inline-block;
+  padding: 2px;
   margin: 0 10px;
 }
 a {
