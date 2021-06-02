@@ -20,7 +20,7 @@ export default class NewsFeed extends Vue {
 
   mounted(): unknown {
     return axios
-      .get("http://localhost:4000/chitter")
+      .get("http://localhost:4000/chitter/peeps")
       .then((response) => (this.peeps = response.data));
   }
 }

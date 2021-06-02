@@ -1,6 +1,11 @@
 <template>
   <div class="newPeepForm">
-    <form id="peep-form" @submit.prevent="createPeep" method="POST" action="/">
+    <form
+      id="peep-form"
+      @submit.prevent="createPeep"
+      method="POST"
+      action="/peeps"
+    >
       <label>Post a peep to chitter</label>
       <input
         type="text"
@@ -33,10 +38,12 @@ export default class NewPeepForm extends Vue {
 
   createPeep(): void {
     this.formData = { body: this.peep };
-    axios.post("http://localhost:4000/chitter", this.formData).then((res) => {
-      console.log(res.data);
-      this.peepBody = res.data;
-    });
+    axios
+      .post("http://localhost:4000/chitter/peeps", this.formData)
+      .then((res) => {
+        console.log(res.data);
+        this.peepBody = res.data;
+      });
     window.location.reload();
   }
 }
